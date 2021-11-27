@@ -1,18 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="fill_parent"
+    android:id="@+id/relativeLayout1"
+    android:background="@color/purple_100"
+    android:layout_width="wrap_content">
     <TextView
+        android:text="Little story for a little boy"
+        android:id="@+id/textViewHeader"
+        android:textSize="28sp"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+    </TextView>
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:id="@+id/textViewFooter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+    <ScrollView
+        android:layout_above="@id/textViewFooter"
+        android:layout_below="@id/textViewHeader"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        >
+        <LinearLayout
+            android:layout_below="@id/textViewHeader"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <TextView android:text="Do you remember the stories that you read as a child?moral stories for kids
+There was something about them — many were stories with morals! Would it not be interesting to narrate them to your child?
+We have just the list for you to start with!
+In this blog, we have a list of 11 moral stories for kids in English and we tell you why stories help your child acquire moral values.
+Let us start with what a moral story means. It is simple — a story that offers some life lesson or a message that requires the reader to learn.
+Stories with morals impart all-important life lessons to a child, which in turn forms a strong foundation for them to respond to life situations. Eg: Handling disappointment, being kind, etc.
+Research shows that young children learn moral reasoning through what they are told. As they grow, they decide the right and wrong.
+Thus, narrating or reading moral stories can go a long way to help your child.
+And, an add-on:
+They aid in their language development!
+RELATED: Storytelling: Incredible Ways To Tell Great Stories To Your Child
+So, which story would you start with?
+Check out our list of moral stories for kids to get you started!
+11 Interesting Short Moral Stories For Kids
+Moral stories can needn’t be serious, but they can be funny at the same time help your child learn something.
+We have compiled a list of stories that are inspirational, from India, and from around the world.
+Inspirational Moral Stories
+1) The Potato, The Egg, And The Coffee Beans
+A boy named John was upset. His father found him crying.
+When his father asked John why he was crying, he said that he had a lot of problems in his life.
+His father simply smiled and asked him to get a potato, an egg, and some coffee beans. He placed them in three bowls.
+He then asked John to feel their texture and then fill each bowl with water.
+John did as he had been told. His father then boiled all three bowls.
+Once the bowls had cooled down, John’s father asked him to feel the texture of the different food items again.
+John noticed that the potato had become soft and its skin was peeling off easily; the egg had become harder and tougher; the coffee beans had completely changed and filled the bowl of water with aroma and flavour."
+                android:id="@+id/textViewBody"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
