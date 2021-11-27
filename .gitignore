@@ -15,3 +15,28 @@
 local.properties
 
 
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/captures
+app/build
+app/libs
+app/proguard-rules.pro
+.externalNativeBuild
+.cxx
+local.properties
+.gitignore
+.idea/
+build.gradle
+gradle.properties
+gradle/
+gradlew
+gradlew.bat
+settings.gradle
