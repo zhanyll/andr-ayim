@@ -6,13 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/header"
+        android:text="Traffic Lights"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:layout_margin="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_1"/>
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:id="@+id/txt_1"-->
+<!--        android:text="smt"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="28sp"-->
+<!--        android:layout_margin="25dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/header"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btn_1"/>-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_1"
+        android:text="red"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_margin="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_2"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_2"
+        android:text="yellow"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_margin="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_3"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_3"
+        android:text="green"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_margin="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
