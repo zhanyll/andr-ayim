@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun onClick(view: View) {
-        val container = findViewById<LinearLayout>(R.id.container)
+        val container = findViewById<LinearLayout>(R.id.container) // получается findViewById будет вызываться при каждом клике, эт не хорошо. Дз приму, но так делать не стоит
         when (view.id) {
             R.id.btn_1 -> { container.setBackgroundColor(Color.parseColor("red"))}
             R.id.btn_2 -> { container.setBackgroundColor(Color.parseColor("yellow"))}
