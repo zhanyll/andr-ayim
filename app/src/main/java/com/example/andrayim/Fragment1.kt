@@ -33,8 +33,8 @@ class Fragment1: Fragment(R.layout.fragment_1) {
             listener.onClick(it)
         }
 
-        val recycler = view?.findViewById<RecyclerView>(R.id.recycler)
-        recycler?.adapter = adapter
+        val recycler = view?.findViewById<RecyclerView>(R.id.recycler) // view указана как не nullable, поэтому nullsafty вызов тут лишний
+        recycler?.adapter = adapter // тогда и в recycler'е не нужен будет nullsafty вызов
         recycler?.layoutManager = LinearLayoutManager(activity)
         recycler?.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
 
