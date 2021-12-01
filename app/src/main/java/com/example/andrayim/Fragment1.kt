@@ -29,54 +29,10 @@ class Fragment1: Fragment(R.layout.fragment_1) {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.fragment_1, container, false)
-//    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e(TAG, "onViewCreated")
     }
-
-    override fun onStart() {
-        super.onStart()
-        Log.e(TAG, "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.e(TAG, "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e(TAG, "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.e(TAG, "onStop")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e(TAG, "onDestroyView")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.e(TAG, "onDestroy")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Log.e(TAG, "onDetach")
-    }
-
 
     companion object {
         const val TAG = "Fragment_1"
