@@ -2,11 +2,16 @@ package com.example.andrayim
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.andrayim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnFragmentClick {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding.fragmentContainer
+        setContentView(binding.root)
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, Fragment1())

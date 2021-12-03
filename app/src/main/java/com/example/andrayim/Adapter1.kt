@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.andrayim.databinding.ActivityMainBinding
+import com.example.andrayim.databinding.Fragment1Binding
 
 class Adapter1(
     private val click: (pos: Int) -> Unit
@@ -17,6 +19,8 @@ class Adapter1(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+//        val itemBinding = Fragment1Binding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler, parent, false)
         return ViewHolder(itemView, click)
@@ -34,10 +38,12 @@ class Adapter1(
 
     class ViewHolder(
         itemView: View,
-        private val click: (pos: Int) -> Unit): RecyclerView.ViewHolder(itemView) {
+        private val click: (pos: Int) -> Unit
+    ): RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: String) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_txt)
+
             txt.text = item
             itemView.setOnClickListener {
                 click.invoke(adapterPosition)
