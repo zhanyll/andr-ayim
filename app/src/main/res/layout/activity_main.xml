@@ -1,259 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/expression"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:textColor="@color/white"
+        android:ellipsize="start"
+        android:textSize="30sp"
+        android:gravity="end" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="80sp"
+        android:textSize="45sp"
+        android:ellipsize="end"
+        android:textColor="@color/white"
+        android:gravity="end"/>
+
     <LinearLayout
-        android:id="@+id/container1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/container2">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="24sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="4"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/clear"
+                style="@style/ActButton"
+                android:text="AC"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num8"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="8"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="106dp"
-            tools:layout_editor_absoluteY="533dp" />
+            <TextView
+                android:id="@+id/openP"
+                style="@style/ActButton"
+                android:text="("/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num6"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="6"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/closeP"
+                style="@style/ActButton"
+                android:text=")"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num7"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="7"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="533dp" />
+            <TextView
+                android:id="@+id/div"
+                style="@style/ActButton"
+                android:text="/"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num9"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="9"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="200dp"
-            tools:layout_editor_absoluteY="533dp" />
+        </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="2"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/one"
+                style="@style/ActButton"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/two"
+                style="@style/ActButton"
+                android:text="2"/>
+
+            <TextView
+                android:id="@+id/three"
+                style="@style/ActButton"
+                android:text="3"/>
+
+            <TextView
+                android:id="@+id/multiply"
+                style="@style/ActButton"
+                android:text="*"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/four"
+                style="@style/ActButton"
+                android:text="4"/>
+
+            <TextView
+                android:id="@+id/five"
+                style="@style/ActButton"
+                android:text="5"/>
+
+            <TextView
+                android:id="@+id/six"
+                style="@style/ActButton"
+                android:text="6"/>
+
+            <TextView
+                android:id="@+id/minus"
+                style="@style/ActButton"
+                android:text="-"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/seven"
+                style="@style/ActButton"
+                android:text="7"/>
+
+            <TextView
+                android:id="@+id/eight"
+                style="@style/ActButton"
+                android:text="8"/>
+
+            <TextView
+                android:id="@+id/nine"
+                style="@style/ActButton"
+                android:text="9"/>
+
+            <TextView
+                android:id="@+id/plus"
+                style="@style/ActButton"
+                android:text="+"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/point"
+                style="@style/ActButton"
+                android:text="."/>
+
+            <TextView
+                android:id="@+id/zero"
+                style="@style/ActButton"
+                android:text="0"/>
+
+            <TextView
+                android:id="@+id/back"
+                style="@style/ActButton"
+                android:text="back"/>
+
+            <TextView
+                android:id="@+id/equal"
+                style="@style/ActButton"
+                android:text="="/>
+
+        </LinearLayout>
     </LinearLayout>
-
-    <androidx.constraintlayout.widget.Constraints
-        android:id="@+id/container2"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <Button
-            android:id="@+id/num1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="1"
-            android:textColor="@color/black"
-            android:textSize="24sp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="5"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="3"
-            android:textColor="@color/black"
-            android:textSize="24sp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/num0"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="0"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="100dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/divide"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="/"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="316dp"
-            tools:layout_editor_absoluteY="229dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/plus"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="+"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="300dp"
-            tools:layout_editor_absoluteY="525dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/minus"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="-"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="306dp"
-            tools:layout_editor_absoluteY="443dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/res"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="="
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="306dp"
-            tools:layout_editor_absoluteY="633dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/multiply"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="*"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="306dp"
-            tools:layout_editor_absoluteY="333dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/openP"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="("
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="116dp"
-            tools:layout_editor_absoluteY="243dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/closeP"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text=")"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="216dp"
-            tools:layout_editor_absoluteY="243dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/ac"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="AC"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="243dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/back"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="6dp"
-            android:background="#5062C5"
-            android:text="back"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/res"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/num0"
-            app:layout_constraintTop_toBottomOf="@+id/num9"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/point"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#5062C5"
-            android:text="."
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.Constraints>
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
