@@ -33,7 +33,7 @@ class Fragment1: Fragment(R.layout.fragment_1) {
             listener.onClick(it)
         }
 
-        val recycler = view?.findViewById<RecyclerView>(R.id.recycler)
+        val recycler = view?.findViewById<RecyclerView>(R.id.recycler) // а зачем здесь null-safety оператор
         recycler?.adapter = adapter
         recycler?.layoutManager = LinearLayoutManager(activity)
         recycler?.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
