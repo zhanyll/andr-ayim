@@ -39,8 +39,8 @@
 
             <TextView
                 android:id="@+id/clear"
-                style="@style/ActButton"
-                android:text="AC"/>
+                style="@style/ActButton" // hw-12: не желательно добавлять в стили аттрибуты ширины и высоты
+                android:text="AC"/> // hw-12: все текста нужно выносить в strings.xml
 
             <TextView
                 android:id="@+id/openP"
