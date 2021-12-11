@@ -10,11 +10,11 @@ import com.example.andrayim.databinding.ActivityMainBinding
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding // эта переменная не используется нигде, потому что ниже создала переменную с таким же названим
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityMainBinding.inflate(layoutInflater) // val binding - закрыла переменную выше
         setContentView(binding.root)
 
         val receiver = binding.receiver.text.toString()
@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         intent.data = Uri.parse("mailto:")
         intent.type = "text/plain"
 
-        intent.putExtra(Intent.EXTRA_EMAIL, receiver)
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-        intent.putExtra(Intent.EXTRA_TEXT, text)
+        intent.putExtra(Intent.EXTRA_EMAIL, receiver) // не подставляется
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject) // не подставляется
+        intent.putExtra(Intent.EXTRA_TEXT, text) // не подставляется
 
         try {
             startActivity(intent)
