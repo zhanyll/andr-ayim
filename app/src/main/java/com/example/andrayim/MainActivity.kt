@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.andrayim.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), OnClick {
+class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,9 +15,5 @@ class MainActivity : AppCompatActivity(), OnClick {
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, FirstFragment())
             .commit()
-    }
-
-    override fun onClick() {
-        super.onClick()
     }
 }
