@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.andrayim.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), ChangeImage {
+class MainActivity : AppCompatActivity(), OnButtonClick {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,17 +17,18 @@ class MainActivity : AppCompatActivity(), ChangeImage {
 
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container_1, Fragment1())
-            .addToBackStack(null)
-            .commit()
-
-        supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container_2, Fragment2())
             .addToBackStack(null)
             .commit()
     }
 
-    override fun onClick(image: String) {
+    override fun onClickFirstFragment(enteredText: String) {
         val fragment2 = supportFragmentManager.findFragmentById(R.id.fragment_container_2) as Fragment2
-        fragment2.setImage(image)
+        fragment2.setText(enteredText)
+    }
+
+    override fun onClickSecondFragment(enteredText: String) {
+        val fragment1 = supportFragmentManager.findFragmentById(R.id.fragment_container_1) as Fragment1
+        fragment1.setText(enteredText)
     }
 }
