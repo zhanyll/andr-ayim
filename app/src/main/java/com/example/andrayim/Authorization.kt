@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.andrayim.databinding.AuthorizationBinding
 
+// классы фрагменты называем так: AuthorizationFragment, MainFragment, AboutFragment и тд
 class Authorization: Fragment(R.layout.authorization) {
     private var _binding: AuthorizationBinding? = null
     private val binding get() = _binding!!
@@ -21,7 +22,7 @@ class Authorization: Fragment(R.layout.authorization) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = AuthorizationBinding.bind(view)
+        _binding = AuthorizationBinding.bind(view) // обязательно зануляем биндинг в onDestroyView
 
         binding.btn.setOnClickListener {
             if (binding.editEmail.text.toString() == login && binding.editPassword.text.toString() == password) {
