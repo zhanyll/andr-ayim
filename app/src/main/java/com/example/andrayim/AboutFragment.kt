@@ -21,7 +21,7 @@ class AboutFragment: Fragment(R.layout.about_fragment) {
         binding.toolbar.inflateMenu(R.menu.menu_about)
         binding.toolbar.setOnMenuItemClickListener {
             if (it.itemId == R.id.backMenu) {
-                activity?.onBackPressed()
+                requireActivity().onBackPressed()
             } else {
                 Toast.makeText(activity, "Something went wrong", Toast.LENGTH_SHORT).show()
             }
