@@ -22,4 +22,11 @@ class MainActivity : AppCompatActivity(), OnClick {
             .replace(R.id.fragment_container, MainFragment())
             .commit()
     }
+
+    override fun onClickMenu() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, AboutFragment())
+            .addToBackStack(null)
+            .commit()
+    }
 }

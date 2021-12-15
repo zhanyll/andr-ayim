@@ -13,12 +13,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Main Screen"
-        android:textSize="28sp"
+        android:text="About Myself"
         android:textColor="@color/black"
+        android:textSize="28sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
