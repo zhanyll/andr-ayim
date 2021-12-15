@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity(), OnClick {
             .commit()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
+
     override fun onClick() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, MainFragment())
