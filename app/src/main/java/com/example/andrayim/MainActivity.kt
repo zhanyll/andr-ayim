@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SimpleAdapter
+import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.andrayim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = SimpleAdapter{
-
-            val intent = Intent(this, MainActivity2::class.java)
-                .apply { putExtra("text", "activity of item - $it") }
-            startActivity(intent)
+            Toast.makeText(this, "this is the item - $it", Toast.LENGTH_SHORT).show()
         }
 
         val recycler = binding.recycler
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         recycler.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
 
         val list = mutableListOf<String>()
-        for (i in 0..30) {
+        for (i in 1..30) {
             list.add("ITEM - $i")
         }
 
