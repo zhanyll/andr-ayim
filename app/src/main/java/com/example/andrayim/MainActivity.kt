@@ -14,29 +14,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val receiver = binding.receiver.text.toString()
         val subject = binding.subject.text.toString()
         val text = binding.text.text.toString()
 
-        binding.btn.setOnClickListener { onClick(receiver, subject, text) }
-    }
+        binding.btn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SEND)
+            val receivers = receiver.split(",".toRegex()).toTypedArray()
+            intent.putExtra(Intent.EXTRA_EMAIL, receivers)
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+            intent.putExtra(Intent.EXTRA_TEXT, text)
+            intent.type = "message/rfc822"
 
-    fun onClick(receiver: String, subject: String, text: String) {
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.data = Uri.parse("mailto:")
-        intent.type = "text/plain"
-
-        intent.putExtra(Intent.EXTRA_EMAIL, receiver)
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-        intent.putExtra(Intent.EXTRA_TEXT, text)
-
-        try {
-            startActivity(intent)
-        } catch (e: Exception) {
-            Toast.makeText(this, "$e", Toast.LENGTH_SHORT).show()
+            if (intent.resolveActivity(packageManager) != null){
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
