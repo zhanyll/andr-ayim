@@ -31,4 +31,9 @@ class Authorization: Fragment(R.layout.authorization) {
             }
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
