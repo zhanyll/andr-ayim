@@ -33,10 +33,10 @@ class Fragment1: Fragment(R.layout.fragment_1) {
             listener.onClick(it)
         }
 
-        val recycler = view?.findViewById<RecyclerView>(R.id.recycler)
-        recycler?.adapter = adapter
-        recycler?.layoutManager = LinearLayoutManager(activity)
-        recycler?.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(activity)
+        recycler.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
 
         val list = mutableListOf<String>()
         for (i in 0..30) {
