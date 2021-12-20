@@ -13,6 +13,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.andrayim.databinding.ActivityMainBinding
 import java.lang.Exception
+import java.lang.reflect.Executable
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,18 +27,17 @@ class MainActivity : AppCompatActivity() {
         val btn = findViewById<AppCompatButton>(R.id.btn)
 
         btn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_SEND)
+            val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:")
-//            val receivers = receiver.text.toString().split(",".toRegex()).toTypedArray()
-            intent.putExtra(Intent.EXTRA_EMAIL, receiver.text)
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject.text)
-            intent.putExtra(Intent.EXTRA_TEXT, text.text)
-            intent.type = "message/rfc822"
+            val receivers = receiver.text.toString().split(",".toRegex()).toTypedArray()
+            intent.putExtra(Intent.EXTRA_EMAIL, receivers)
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject.text.toString())
+            intent.putExtra(Intent.EXTRA_TEXT, text.text.toString())
 
-            if (intent.resolveActivity(packageManager) != null){
+            try{
                 startActivity(intent)
-            } else {
-                Toast.makeText(this, "something went wrong", Toast.LENGTH_SHORT).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "something went wrong: $e", Toast.LENGTH_SHORT).show()
             }
         }
     }
