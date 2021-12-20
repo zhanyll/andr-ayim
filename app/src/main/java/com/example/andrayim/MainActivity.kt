@@ -1,32 +1,37 @@
 package com.example.andrayim
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.OutcomeReceiver
+import android.util.AttributeSet
+import android.view.View
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import com.example.andrayim.databinding.ActivityMainBinding
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        val receiver = binding.receiver.text.toString()
-        val subject = binding.subject.text.toString()
-        val text = binding.text.text.toString()
+        val receiver = findViewById<AppCompatEditText>(R.id.email)
+        val subject = findViewById<AppCompatEditText>(R.id.subject)
+        val text = findViewById<AppCompatEditText>(R.id.text)
+        val btn = findViewById<AppCompatButton>(R.id.btn)
 
-        binding.btn.setOnClickListener {
+        btn.setOnClickListener {
             val intent = Intent(Intent.ACTION_SEND)
-            val receivers = receiver.split(",".toRegex()).toTypedArray()
-            intent.putExtra(Intent.EXTRA_EMAIL, receivers)
-            intent.putExtra(Intent.EXTRA_SUBJECT, subject)
-            intent.putExtra(Intent.EXTRA_TEXT, text)
+            intent.data = Uri.parse("mailto:")
+//            val receivers = receiver.text.toString().split(",".toRegex()).toTypedArray()
+            intent.putExtra(Intent.EXTRA_EMAIL, receiver.text)
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject.text)
+            intent.putExtra(Intent.EXTRA_TEXT, text.text)
             intent.type = "message/rfc822"
 
             if (intent.resolveActivity(packageManager) != null){

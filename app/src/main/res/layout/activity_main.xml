@@ -16,10 +16,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/receiver"/>
+        app:layout_constraintBottom_toTopOf="@+id/email"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/receiver"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="send to"
@@ -39,7 +39,7 @@
         android:layout_margin="8sp"
         android:background="#C0D8C1"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@+id/receiver"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintBottom_toTopOf="@id/text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
