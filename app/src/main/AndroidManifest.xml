@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndrAyim">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="openActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

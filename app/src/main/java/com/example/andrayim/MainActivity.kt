@@ -1,5 +1,6 @@
 package com.example.andrayim
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -23,5 +24,11 @@ class MainActivity : AppCompatActivity(), OnFragmentClick {
             .replace(R.id.fragment_container, fragment2)
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun showActivity(enteredText: Int) {
+        val intent = Intent("openActivity")
+        intent.putExtra("key", enteredText.toString())
+        startActivity(intent)
     }
 }

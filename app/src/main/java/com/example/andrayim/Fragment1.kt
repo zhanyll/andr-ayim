@@ -16,7 +16,6 @@ class Fragment1: Fragment(R.layout.fragment_1) {
         super.onCreate(savedInstanceState)
 
         listener = context as OnFragmentClick
-
     }
 
     override fun onCreateView(
