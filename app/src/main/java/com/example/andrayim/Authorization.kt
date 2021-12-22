@@ -27,6 +27,7 @@ class Authorization: Fragment(R.layout.authorization) {
             if (binding.editEmail.text.toString() == login && binding.editPassword.text.toString() == password) {
                 listener.onClick()
             } else {
+                binding.passwordInputLayout.error = getString(R.string.error)
                 Toast.makeText(activity, "wrong login or password!", Toast.LENGTH_SHORT).show()
             }
         }

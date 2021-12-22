@@ -4,39 +4,70 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_email"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter email"
-        android:imeOptions="actionNext"
-        android:maxLines="1"
-        android:lines="1"
-        android:inputType="textEmailAddress"
-        android:textSize="21sp"
+        android:hint="@string/email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="#6C44B1"
+        app:boxStrokeWidth="1dp"
+        app:errorEnabled="true"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/edit_password"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/password_inputLayout">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edit_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="textEmailAddress"
+            android:textSize="21sp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@id/edit_password"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter password"
-        android:imeOptions="actionDone"
-        android:maxLines="1"
-        android:lines="1"
-        android:inputType="textPassword"
-        android:textSize="21sp"
+        android:hint="@string/password"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="#6C44B1"
+        app:boxStrokeWidth="1dp"
+        app:errorEnabled="true"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/btn"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/email_inputLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_email" />
+        app:layout_constraintBottom_toTopOf="@id/btn">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:lines="1"
+            android:inputType="textPassword"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_email" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
@@ -44,7 +75,7 @@
         android:layout_height="wrap_content"
         android:text="Войти"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/edit_password"
+        app:layout_constraintTop_toBottomOf="@id/password_inputLayout"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
