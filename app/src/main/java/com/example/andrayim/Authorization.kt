@@ -10,9 +10,10 @@ import com.example.andrayim.databinding.AuthorizationBinding
 class Authorization: Fragment(R.layout.authorization) {
     private var _binding: AuthorizationBinding? = null
     private val binding get() = _binding!!
+    private val preferences get() = Injector.preferences
     private lateinit var listener: OnClick
-    private val login = "zhanyll@gmail.com"
-    private val password = "Zhanyl2000"
+    private val login = preferences.getLogin("LOGIN_KEY")
+    private val password = preferences.getPassword("PASSWORD_KEY")
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

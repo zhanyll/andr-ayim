@@ -6,15 +6,24 @@ import com.example.andrayim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), OnClick {
     private lateinit var binding: ActivityMainBinding
+    private val preferences get() = Injector.preferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, Authorization())
-            .commit()
+//        val myPrefs = this.preferences
+        val login = preferences.getLogin("LOGIN_KEY")
+        if (login.isEmpty()) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, RegistrationFragment())
+                .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, Authorization())
+                .commit()
+        }
     }
 
     override fun onClick() {
