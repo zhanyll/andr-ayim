@@ -1,5 +1,6 @@
 package com.example.andrayim
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.andrayim.databinding.ActivityMain3Binding
@@ -13,6 +14,9 @@ class MainActivity3 : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btn.setOnClickListener {
+            val intent = Intent()
+            intent.putExtra("key", "Hello from activity 3")
+            setResult(RESULT_OK, intent)
             finish()
         }
     }
