@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,12 +37,14 @@ class Fragment1: Fragment(R.layout.fragment_1) {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(activity)
-        recycler.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
 
         val list = mutableListOf<String>()
         for (i in 0..30) {
             list.add("ITEM - $i")
         }
+
+        GridLayoutManager(activity, 2, RecyclerView.VERTICAL, false)
+            .apply { recycler.layoutManager = this }
 
         adapter.setData(list)
     }

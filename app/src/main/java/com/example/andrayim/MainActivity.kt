@@ -2,6 +2,8 @@ package com.example.andrayim
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity(), OnFragmentClick {
     override fun onCreate(savedInstanceState: Bundle?) {
