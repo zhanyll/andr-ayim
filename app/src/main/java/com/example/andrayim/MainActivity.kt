@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val o = "o".toRegex()
         for (i in lst) {
             val count = o.findAll(i).count()
-            if (i.contains("o") && count == 1) {
+            if (count == 1) {
                 res += 1
             }
         }
