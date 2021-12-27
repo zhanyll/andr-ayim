@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun findO(text: String): Int {
-        val lst = text.split(" ")
+        val lst = text.split(" ", "\n")
         var res = 0
         val o = "o".toRegex()
         for (i in lst) {
