@@ -17,21 +17,21 @@ class MainActivity : AppCompatActivity() {
 //            val oo = "o".toRegex()
 //            val result = oo.findAll(text).count()
             val result = findO(text)
-            binding.txt.text = result.toString()
+            binding.word.text = result?.key ?: ""
+            binding.max.text = (result?.value ?: 0).toString()
         }
     }
 
-    private fun findO(text: String): Int {
+    private fun findO(text: String): Map.Entry<String, Int>? {
         val lst = text.split(" ", "\n")
-        var res = 0
-        val charr = "(ая)$".toRegex()
+        val char = "a".toRegex()
+        val list = mutableMapOf<String, Int>()
         for (i in lst) {
-            val count = charr.findAll(i).count()
-            if (count == 1) {
-                res += 1
-            }
+            val count = char.findAll(i).count()
+            list.put(i, count)
         }
-        return res
+        val max = list.maxByOrNull { p -> p.value }
+        return max
     }
 }
 
