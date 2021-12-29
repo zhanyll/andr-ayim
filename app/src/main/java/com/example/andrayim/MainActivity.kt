@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
     private fun findO(text: String): Int {
         val lst = text.split(" ", "\n")
         var res = 0
-        val o = "o".toRegex()
+        val charr = "(ая)$".toRegex()
         for (i in lst) {
-            val count = o.findAll(i).count()
+            val count = charr.findAll(i).count()
             if (count == 1) {
                 res += 1
             }
@@ -34,3 +34,6 @@ class MainActivity : AppCompatActivity() {
         return res
     }
 }
+
+// классная классификация яркая дерзкий
+//лёгкий смелая
