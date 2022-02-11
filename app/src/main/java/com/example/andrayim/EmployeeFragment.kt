@@ -21,4 +21,9 @@ class EmployeeFragment: Fragment(R.layout.employee_fragment) {
             txtSalary.text = e.salary.toString()
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

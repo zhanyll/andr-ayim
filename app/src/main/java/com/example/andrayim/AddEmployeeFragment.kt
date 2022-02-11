@@ -35,4 +35,9 @@ class AddEmployeeFragment: Fragment(R.layout.add_employee_fragment) {
 
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
