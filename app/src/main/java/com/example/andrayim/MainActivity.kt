@@ -23,4 +23,16 @@ class MainActivity : AppCompatActivity(), Clicked {
             .addToBackStack(null)
             .commit()
     }
+
+    override fun onBack() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, AddEmployeeFragment())
+            .commit()
+    }
+
+    override fun onEdit() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, EditEmployeeFragment())
+            .commit()
+    }
 }

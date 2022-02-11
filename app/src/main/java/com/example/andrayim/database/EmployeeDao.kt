@@ -11,7 +11,7 @@ interface EmployeeDao {
     fun getById(id: Long): Employee
 
     @Insert
-    fun insert(employee:Employee)
+    fun insert(employee:Employee): Long
 
     @Update
     fun update(employee: Employee)

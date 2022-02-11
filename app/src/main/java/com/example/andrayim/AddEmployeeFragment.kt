@@ -32,7 +32,11 @@ class AddEmployeeFragment: Fragment(R.layout.add_employee_fragment) {
                 dbInstance.employeeDao().insert(e)
                 listener.onClick()
             }
-
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
