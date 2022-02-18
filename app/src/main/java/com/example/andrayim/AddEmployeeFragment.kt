@@ -30,7 +30,7 @@ class AddEmployeeFragment: Fragment(R.layout.add_employee_fragment) {
                     salary = editSalary.text.toString().toInt()
                 )
                 dbInstance.employeeDao().insert(e)
-                listener.onClick()
+                listener.onMain()
             }
         }
     }

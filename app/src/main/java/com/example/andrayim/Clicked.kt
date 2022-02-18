@@ -1,9 +1,11 @@
 package com.example.andrayim
 
 interface Clicked {
-    fun onClick() {}
+    fun onClick(id: Long) {}
 
-    fun onBack() {}
+    fun onAdd() {}
 
     fun onEdit() {}
+
+    fun onMain() {}
 }

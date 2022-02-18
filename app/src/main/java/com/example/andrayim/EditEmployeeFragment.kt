@@ -29,7 +29,7 @@ class EditEmployeeFragment: Fragment(R.layout.edit_employee_fragment) {
                 e.company = editCompany.text.toString()
                 e.salary = editSalary.text.toString().toInt()
                 dbInstance.employeeDao().update(e)
-                listener.onBack()
+                listener.onMain()
             }
         }
     }

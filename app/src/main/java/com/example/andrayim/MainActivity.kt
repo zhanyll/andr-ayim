@@ -13,18 +13,25 @@ class MainActivity : AppCompatActivity(), Clicked {
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, AddEmployeeFragment())
+            .add(R.id.fragment_container, MainFragment())
             .commit()
     }
 
-    override fun onClick() {
+    override fun onMain() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, MainFragment())
+            .addToBackStack(null)
+            .commit()
+    }
+
+    override fun onClick(id: Long) {
         supportFragmentManager.beginTransaction()
             .add(R.id.fragment_container, EmployeeFragment())
             .addToBackStack(null)
             .commit()
     }
 
-    override fun onBack() {
+    override fun onAdd() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, AddEmployeeFragment())
             .commit()

@@ -29,7 +29,7 @@ class EmployeeFragment: Fragment(R.layout.employee_fragment) {
 
             btnDelete.setOnClickListener {
                 dbInstance.employeeDao().delete(e)
-                listener.onBack()
+                listener.onMain()
             }
 
             btnEdit.setOnClickListener {
