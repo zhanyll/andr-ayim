@@ -3,6 +3,7 @@ package com.example.andrayim
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andrayim.database.Employee
@@ -32,11 +33,19 @@ class MyAdapter(private val click: (pos: Int) -> Unit): RecyclerView.Adapter<MyA
     }
 
     class ViewHolder(itemView: View, private val click: (pos: Int) -> Unit): RecyclerView.ViewHolder(itemView) {
+        private val dbInstance get() = Injector.database
         fun bind(item: Employee) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_txt)
+            val btnDelete = itemView.findViewById<AppCompatImageButton>(R.id.btnDelete)
             txt.text = item.name
+            val employee = dbInstance.employeeDao().getById(1L)
+
             itemView.setOnClickListener {
                 click.invoke(adapterPosition)
+            }
+
+            btnDelete.setOnClickListener{
+                dbInstance.employeeDao().delete(employee)
             }
         }
     }

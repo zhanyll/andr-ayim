@@ -20,6 +20,7 @@ class EmployeeFragment: Fragment(R.layout.employee_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = EmployeeFragmentBinding.bind(view)
+        val id = arguments?.getString("id") ?: "1"
 
         binding.apply {
             val e = dbInstance.employeeDao().getById(1L)

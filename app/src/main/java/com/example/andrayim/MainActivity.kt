@@ -25,8 +25,13 @@ class MainActivity : AppCompatActivity(), Clicked {
     }
 
     override fun onClick(id: Long) {
+        val employee_fragment = EmployeeFragment()
+        val bundle = Bundle()
+        bundle.putString("id", id.toString())
+        employee_fragment.arguments = bundle
+
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, EmployeeFragment())
+            .add(R.id.fragment_container, employee_fragment)
             .addToBackStack(null)
             .commit()
     }
