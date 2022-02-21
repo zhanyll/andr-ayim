@@ -20,9 +20,10 @@ class EditEmployeeFragment: Fragment(R.layout.edit_employee_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = EditEmployeeFragmentBinding.bind(view)
+        val id = arguments?.getLong("id") ?: 1L
 
         binding.apply {
-            val e = dbInstance.employeeDao().getById(1L)
+            val e = dbInstance.employeeDao().getById(id)
 
             editButton.setOnClickListener {
                 e.name = editName.text.toString()

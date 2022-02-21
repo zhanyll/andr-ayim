@@ -8,7 +8,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.andrayim.database.Employee
 
-class MyAdapter(private val click: (pos: Int) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private val click: (employee: Employee) -> Unit,
+                private val deleteClick: (id: Long, position: Int) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     private val dbInstance get() = Injector.database
     private var list = dbInstance.employeeDao().getAll()
 
@@ -17,10 +18,16 @@ class MyAdapter(private val click: (pos: Int) -> Unit): RecyclerView.Adapter<MyA
         notifyDataSetChanged()
     }
 
+    fun deleteItem(position: Int) {
+        list = list.toMutableList().apply { removeAt(position) }
+        notifyItemRemoved(position)
+        notifyItemRangeChanged(position, list.size)
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler, parent, false)
-        return ViewHolder(itemView, click)
+        return ViewHolder(itemView, click, deleteClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,20 +39,20 @@ class MyAdapter(private val click: (pos: Int) -> Unit): RecyclerView.Adapter<MyA
         return list.size
     }
 
-    class ViewHolder(itemView: View, private val click: (pos: Int) -> Unit): RecyclerView.ViewHolder(itemView) {
-        private val dbInstance get() = Injector.database
+    class ViewHolder(itemView: View,
+                     private val click: (employee:Employee) -> Unit,
+                     private val deleteClick: (id: Long, position: Int) -> Unit): RecyclerView.ViewHolder(itemView) {
         fun bind(item: Employee) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_txt)
             val btnDelete = itemView.findViewById<AppCompatImageButton>(R.id.btnDelete)
             txt.text = item.name
-            val employee = dbInstance.employeeDao().getById(1L)
 
             itemView.setOnClickListener {
-                click.invoke(adapterPosition)
+                click.invoke(item)
             }
 
             btnDelete.setOnClickListener{
-                dbInstance.employeeDao().delete(employee)
+                deleteClick.invoke(item.id?: 1, adapterPosition)
             }
         }
     }

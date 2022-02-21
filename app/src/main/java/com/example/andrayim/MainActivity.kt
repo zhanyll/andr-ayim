@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), Clicked {
     override fun onClick(id: Long) {
         val employee_fragment = EmployeeFragment()
         val bundle = Bundle()
-        bundle.putString("id", id.toString())
+        bundle.putLong("id", id)
         employee_fragment.arguments = bundle
 
         supportFragmentManager.beginTransaction()
@@ -42,9 +42,13 @@ class MainActivity : AppCompatActivity(), Clicked {
             .commit()
     }
 
-    override fun onEdit() {
+    override fun onEdit(id: Long) {
+        val editEmployeeFragment = EditEmployeeFragment()
+        val bundle = Bundle()
+        bundle.putLong("id", id)
+        editEmployeeFragment.arguments = bundle
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, EditEmployeeFragment())
+            .replace(R.id.fragment_container, editEmployeeFragment)
             .commit()
     }
 }

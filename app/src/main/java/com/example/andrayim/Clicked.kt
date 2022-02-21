@@ -5,7 +5,7 @@ interface Clicked {
 
     fun onAdd() {}
 
-    fun onEdit() {}
+    fun onEdit(id: Long) {}
 
     fun onMain() {}
 }
