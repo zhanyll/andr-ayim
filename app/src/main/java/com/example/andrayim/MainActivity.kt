@@ -14,23 +14,28 @@ class MainActivity : AppCompatActivity() {
 
         binding.btn.setOnClickListener {
             val text = binding.editText.text.toString().trim()
-//            val oo = "o".toRegex()
-//            val result = oo.findAll(text).count()
-            val result = findO(text)
-            binding.word.text = result?.key ?: ""
-            binding.max.text = (result?.value ?: 0).toString()
+            val result = find(text)
+            binding.wordKotlin.text = "number of Kotlin: ${result[0]}"
+            binding.wordOf3.text = "number of 3char word: ${result[1]}"
         }
     }
 
-    private fun findO(text: String): Map.Entry<String, Int>? {
+    private fun find(text: String): List<Int> {
         val lst = text.split(" ", "\n", ",", ";", ":")
-        val char = "a".toRegex()
-        val list = mutableMapOf<String, Int>()
+        val list = mutableListOf<Int>()
+
+        var w3 = 0
+        var count = 0
         for (i in lst) {
-            val count = char.findAll(i).count()
-            list.put(i, count)
+            if (i == "kotlin" || i == "Kotlin") {
+                count++
+            }
+            if (i.length == 3) {
+                w3++
+            }
         }
-        val max = list.maxByOrNull { p -> p.value }
-        return max
+        list.add(count)
+        list.add(w3)
+        return list
     }
 }

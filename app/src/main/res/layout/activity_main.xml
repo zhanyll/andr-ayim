@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/word"
+        android:id="@+id/wordKotlin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
@@ -16,16 +16,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/max"/>
+        app:layout_constraintBottom_toTopOf="@id/wordOf3"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/max"
+        android:id="@+id/wordOf3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintTop_toBottomOf="@id/word"
+        app:layout_constraintTop_toBottomOf="@id/wordKotlin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/editText"/>
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/max" />
+        app:layout_constraintTop_toBottomOf="@id/wordOf3" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
