@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun findO(text: String): Map.Entry<String, Int>? {
-        val lst = text.split(" ", "\n")
+        val lst = text.split(" ", "\n", ",", ";", ":")
         val char = "a".toRegex()
         val list = mutableMapOf<String, Int>()
         for (i in lst) {
@@ -34,6 +34,3 @@ class MainActivity : AppCompatActivity() {
         return max
     }
 }
-
-// классная классификация яркая дерзкий
-//лёгкий смелая
