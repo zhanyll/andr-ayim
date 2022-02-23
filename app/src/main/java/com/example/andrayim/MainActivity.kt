@@ -13,29 +13,28 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btn.setOnClickListener {
-            val text = binding.editText.text.toString().trim()
+            val text = binding.editText.text.toString()
             val result = find(text)
-            binding.wordKotlin.text = "number of Kotlin: ${result[0]}"
-            binding.wordOf3.text = "number of 3char word: ${result[1]}"
+            binding.wordKotlin.text = result.keys.toString()
+            binding.wordOf3.text = result.values.toString()
         }
     }
 
-    private fun find(text: String): List<Int> {
-        val lst = text.split(" ", "\n", ",", ";", ":")
-        val list = mutableListOf<Int>()
-
-        var w3 = 0
+    private fun find(text: String): MutableMap<Int, String> {
+        val lst = arrayListOf("?", "!", ",", ";", ":", ".")
+        var txt = text
         var count = 0
-        for (i in lst) {
-            if (i == "kotlin" || i == "Kotlin") {
-                count++
-            }
-            if (i.length == 3) {
-                w3++
-            }
-        }
-        list.add(count)
-        list.add(w3)
+        for (i in text) { for (e in lst) if (i.toString().equals(e)){
+            count++
+        } }
+        var txt2 = txt.replace("!", "*")
+        txt = txt2.replace("?", "*")
+        txt2 = txt.replace(".", "*")
+        txt = txt2.replace(",", "*")
+        txt2 = txt.replace(":", "*")
+        txt = txt2.replace(";", "*")
+        val list = mutableMapOf<Int, String>()
+        list.put(count, txt)
         return list
     }
 }
