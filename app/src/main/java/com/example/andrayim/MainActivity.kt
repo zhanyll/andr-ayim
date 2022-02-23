@@ -14,27 +14,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.btn.setOnClickListener {
             val text = binding.editText.text.toString()
-            val result = find(text)
-            binding.wordKotlin.text = result.keys.toString()
-            binding.wordOf3.text = result.values.toString()
+            val result = replaceInt(text)
+            binding.wordKotlin.text = result
         }
     }
 
-    private fun find(text: String): MutableMap<Int, String> {
-        val lst = arrayListOf("?", "!", ",", ";", ":", ".")
-        var txt = text
-        var count = 0
-        for (i in text) { for (e in lst) if (i.toString().equals(e)){
-            count++
-        } }
-        var txt2 = txt.replace("!", "*")
-        txt = txt2.replace("?", "*")
-        txt2 = txt.replace(".", "*")
-        txt = txt2.replace(",", "*")
-        txt2 = txt.replace(":", "*")
-        txt = txt2.replace(";", "*")
-        val list = mutableMapOf<Int, String>()
-        list.put(count, txt)
-        return list
+    private fun replaceInt(text: String): String {
+        val nums = mapOf(0 to "zero",1 to "one", 2 to "two", 3 to "three", 4 to "four", 5 to "five", 6 to "six", 7 to "seven", 8 to "eight", 9 to "nine")
+        var str = ""
+        for (i in text) {
+            var e = nums[i.toString().toInt()]
+            str = "$str $e "
+        }
+        return str
     }
 }
