@@ -25,30 +25,14 @@ class MainActivity : AppCompatActivity(), Clicked {
     }
 
     override fun onClick(id: Long) {
-        val employee_fragment = EmployeeFragment()
+        val episodeFragment = EpisodeFragment()
         val bundle = Bundle()
         bundle.putLong("id", id)
-        employee_fragment.arguments = bundle
+        episodeFragment.arguments = bundle
 
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, employee_fragment)
+            .add(R.id.fragment_container, episodeFragment)
             .addToBackStack(null)
-            .commit()
-    }
-
-    override fun onAdd() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, AddEmployeeFragment())
-            .commit()
-    }
-
-    override fun onEdit(id: Long) {
-        val editEmployeeFragment = EditEmployeeFragment()
-        val bundle = Bundle()
-        bundle.putLong("id", id)
-        editEmployeeFragment.arguments = bundle
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, editEmployeeFragment)
             .commit()
     }
 }

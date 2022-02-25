@@ -6,28 +6,22 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.andrayim.database.Employee
+import io.reactivex.schedulers.Schedulers
+import java.util.*
 
-class MyAdapter(private val click: (employee: Employee) -> Unit,
-                private val deleteClick: (id: Long, position: Int) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
-    private val dbInstance get() = Injector.database
-    private var list = dbInstance.employeeDao().getAll()
+class MyAdapter(private val click: (episode: Episode) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+    private var list: List<Episode> = mutableListOf()
+//    private var list = api.getEpisodes()
 
-    fun setData(list: List<Employee>) {
+    fun setData(list: List<Episode>) {
         this.list = list
         notifyDataSetChanged()
-    }
-
-    fun deleteItem(position: Int) {
-        list = list.toMutableList().apply { removeAt(position) }
-        notifyItemRemoved(position)
-        notifyItemRangeChanged(position, list.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_recycler, parent, false)
-        return ViewHolder(itemView, click, deleteClick)
+        return ViewHolder(itemView, click)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -40,19 +34,13 @@ class MyAdapter(private val click: (employee: Employee) -> Unit,
     }
 
     class ViewHolder(itemView: View,
-                     private val click: (employee:Employee) -> Unit,
-                     private val deleteClick: (id: Long, position: Int) -> Unit): RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Employee) {
+                     private val click: (episode: Episode) -> Unit): RecyclerView.ViewHolder(itemView) {
+        fun bind(item: Episode) {
             val txt = itemView.findViewById<AppCompatTextView>(R.id.item_txt)
-            val btnDelete = itemView.findViewById<AppCompatImageButton>(R.id.btnDelete)
-            txt.text = item.name
+            txt.text = item.title
 
             itemView.setOnClickListener {
                 click.invoke(item)
-            }
-
-            btnDelete.setOnClickListener{
-                deleteClick.invoke(item.id?: 1, adapterPosition)
             }
         }
     }

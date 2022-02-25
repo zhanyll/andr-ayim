@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodeTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="title"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/episodeSeason"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodeSeason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="season"
+        app:layout_constraintBottom_toTopOf="@id/episodeDate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episodeTitle" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodeDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="date"
+        app:layout_constraintBottom_toTopOf="@id/episodeCharacters"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episodeSeason" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodeCharacters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="characters"
+        app:layout_constraintBottom_toTopOf="@id/episode"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episodeDate" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="episode"
+        app:layout_constraintBottom_toTopOf="@id/episodesSeries"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episodeCharacters" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/episodesSeries"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="18dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        tools:text="series"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/episode" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
