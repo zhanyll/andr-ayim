@@ -11,7 +11,6 @@ import java.util.*
 
 class MyAdapter(private val click: (episode: Episode) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     private var list: List<Episode> = mutableListOf()
-//    private var list = api.getEpisodes()
 
     fun setData(list: List<Episode>) {
         this.list = list
