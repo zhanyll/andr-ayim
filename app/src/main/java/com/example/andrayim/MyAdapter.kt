@@ -10,8 +10,7 @@ import com.example.andrayim.database.Employee
 
 class MyAdapter(private val click: (employee: Employee) -> Unit,
                 private val deleteClick: (id: Long, position: Int) -> Unit): RecyclerView.Adapter<MyAdapter.ViewHolder>() {
-    private val dbInstance get() = Injector.database
-    private var list = dbInstance.employeeDao().getAll()
+    private var list: List<Employee> = mutableListOf()
 
     fun setData(list: List<Employee>) {
         this.list = list

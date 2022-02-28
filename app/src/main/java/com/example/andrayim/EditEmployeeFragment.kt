@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.andrayim.databinding.EditEmployeeFragmentBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class EditEmployeeFragment: Fragment(R.layout.edit_employee_fragment) {
     private val dbInstance get() = Injector.database
@@ -23,14 +25,21 @@ class EditEmployeeFragment: Fragment(R.layout.edit_employee_fragment) {
         val id = arguments?.getLong("id") ?: 1L
 
         binding.apply {
-            val e = dbInstance.employeeDao().getById(id)
-
             editButton.setOnClickListener {
-                e.name = editName.text.toString()
-                e.company = editCompany.text.toString()
-                e.salary = editSalary.text.toString().toInt()
-                dbInstance.employeeDao().update(e)
-                listener.onMain()
+                dbInstance.employeeDao().getById(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSuccess {e ->
+                        e.name = editName.text.toString()
+                        e.company = editCompany.text.toString()
+                        e.salary = editSalary.text.toString().toInt()
+                        listener.onMain()
+                        dbInstance.employeeDao().update(e)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                    }
+                    .subscribe()
             }
         }
     }

@@ -6,6 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.andrayim.database.Employee
 import com.example.andrayim.databinding.AddEmployeeFragmentBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class AddEmployeeFragment: Fragment(R.layout.add_employee_fragment) {
     private var _binding: AddEmployeeFragmentBinding? = null
@@ -30,6 +32,9 @@ class AddEmployeeFragment: Fragment(R.layout.add_employee_fragment) {
                     salary = editSalary.text.toString().toInt()
                 )
                 dbInstance.employeeDao().insert(e)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
                 listener.onMain()
             }
         }

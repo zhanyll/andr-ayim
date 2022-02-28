@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.andrayim.database.Employee
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class MainFragment: Fragment(R.layout.main_fragment) {
     private val dbInstance get() = Injector.database
@@ -32,7 +35,11 @@ class MainFragment: Fragment(R.layout.main_fragment) {
         recycler.adapter = adapter
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
-        adapter.setData(list)
+        dbInstance.employeeDao().getAll()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { adapter.setData(it) }
+            .subscribe()
 
         btn.setOnClickListener {
             listener.onAdd()
@@ -40,23 +47,33 @@ class MainFragment: Fragment(R.layout.main_fragment) {
     }
 
     private fun onDeleteClick(id: Long, position: Int) {
-        val alertDialog: AlertDialog? = activity?.let {
-            val builder = AlertDialog.Builder(it)
-            val e = dbInstance.employeeDao().getById(id)
-            builder.apply {
-                setTitle("delete this item?")
-                setPositiveButton("yes",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        dbInstance.employeeDao().delete(e)
-                        adapter.deleteItem(position)
-                    })
-                setNegativeButton("no",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        Toast.makeText(context, "canceled", Toast.LENGTH_SHORT).show()
-                    })
+        dbInstance.employeeDao().getById(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSuccess { e ->
+                showAlert(e, position)
             }
-            builder.create()
+            .subscribe()
+    }
+
+    private fun showAlert(e: Employee, position: Int) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.apply {
+            setTitle("delete this item?")
+            setPositiveButton("yes",
+                DialogInterface.OnClickListener { dialog, id ->
+                    dbInstance.employeeDao().delete(e)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe()
+                    adapter.deleteItem(position)
+                })
+            setNegativeButton("no",
+                DialogInterface.OnClickListener { dialog, id ->
+                    Toast.makeText(context, "canceled", Toast.LENGTH_SHORT).show()
+                })
         }
-        alertDialog?.show()
+        builder.create()
+        builder.show()
     }
 }
